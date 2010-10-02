@@ -138,6 +138,11 @@ void ofxTwBar::addSeparator( const std::string &name, const std::string &options
 }
 
 //--------------------------------------------------------------
+void ofxTwBar::addGroupToGroup( const std::string &optionsStr ) {
+	TwDefine( optionsStr.c_str() );
+}
+
+//--------------------------------------------------------------
 void ofxTwBar::keyPressed(ofKeyEventArgs & args){
 	int kmod = 0;
 	if( ofKeyShift() ) {
