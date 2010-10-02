@@ -44,7 +44,7 @@ void ofxTwBar::init( const std::string &title, const int w, const int h, const i
 	if(!TwInit(TW_OPENGL, NULL)) {
 		cout << "AntTweakBar initialization failed: " << TwGetLastError() << endl;
 	}
-	mBar = TwNewBar("TweakBar");//, TwDeleteBar);
+	mBar = TwNewBar(title.c_str());//, TwDeleteBar);
 	
 	char optionsStr[1024];
 	sprintf( optionsStr, "%s size='%i %i' color='%i %i %i' alpha=%i", title.c_str(), w, h, r, g, b, a);
