@@ -130,7 +130,12 @@ void ofxTwBar::addParam( const std::string &name, ofxQuaternion *param, const st
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, std::string *param, const std::string &optionsStr, bool readOnly ) {
 	implAddParam( name, param, TW_TYPE_STDSTRING, optionsStr, readOnly );
-} 
+}
+
+//--------------------------------------------------------------
+void ofxTwBar::removeParam(const std::string &name) {
+	TwRemoveVar( mBar, name.c_str());
+}
 
 //--------------------------------------------------------------
 void ofxTwBar::addSeparator( const std::string &name, const std::string &optionsStr ) {

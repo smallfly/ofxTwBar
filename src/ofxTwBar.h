@@ -58,8 +58,12 @@ class ofxTwBar {
 		void	addParam( const std::string &name, ofxQuaternion *quatParam, const std::string &optionsStr = "", bool readOnly = false );
 		void	addParam( const std::string &name, std::string *strParam, const std::string &optionsStr = "", bool readOnly = false );
 		void	addSeparator( const std::string &name = "", const std::string &optionsStr = "" );
-	
+		
+		void	removeParam(const std::string &name);
+		
 		void	addGroupToGroup(const std::string &optionsStr = "");
+	
+		
 		
 	protected:
 		void	implAddParam( const std::string &name, void *param, int type, const string &optionsStr, bool readOnly ); 
