@@ -51,6 +51,8 @@ void ofxTwBar::init( const std::string &title, const int w, const int h, const i
 	TwDefine( optionsStr );
 	
 	TwGLUTModifiersFunc(glutGetModifiers);
+	
+	mouseLocked = false;
 }
 
 //--------------------------------------------------------------
@@ -68,7 +70,7 @@ void ofxTwBar::draw() {
 }
 
 //--------------------------------------------------------------
-void ofxTwBar::enable() {
+void ofxTwBar::enable(bool enableMousePressed) {
 //	ofAddListener(ofEvents.update, this, &ofxTwBar::update);
 //	ofAddListener(ofEvents.draw, this, &ofxTwBar::draw);
 	ofAddListener(ofEvents.windowResized, this, &ofxTwBar::resize);
@@ -76,7 +78,8 @@ void ofxTwBar::enable() {
 	ofAddListener(ofEvents.keyPressed, this, &ofxTwBar::keyPressed);
 	ofAddListener(ofEvents.mouseDragged, this, &ofxTwBar::mouseDragged);
 	ofAddListener(ofEvents.mouseMoved, this, &ofxTwBar::mouseMoved);
-	ofAddListener(ofEvents.mousePressed, this, &ofxTwBar::mousePressed);
+	if(enableMousePressed)
+		ofAddListener(ofEvents.mousePressed, this, &ofxTwBar::mousePressed);
 	ofAddListener(ofEvents.mouseReleased, this, &ofxTwBar::mouseReleased);
 }
 
@@ -143,6 +146,11 @@ void ofxTwBar::addSeparator( const std::string &name, const std::string &options
 }
 
 //--------------------------------------------------------------
+void ofxTwBar::addButton( const std::string &name, const std::string &optionsStr ) {
+	TwAddButton(mBar, name.c_str(), NULL, NULL, optionsStr.c_str());
+}
+
+//--------------------------------------------------------------
 void ofxTwBar::addGroupToGroup( const std::string &optionsStr ) {
 	TwDefine( optionsStr.c_str() );
 }
@@ -199,9 +207,14 @@ void ofxTwBar::mouseDragged(ofMouseEventArgs & args){
 
 //--------------------------------------------------------------
 void ofxTwBar::mousePressed(ofMouseEventArgs & args){
-	mouseX = args.x;
-	mouseY = args.y;
-	TwEventMouseButtonGLUT(args.button, GLUT_DOWN, mouseX, mouseY);
+	mousePressed(args.x, args.y, args.button);
+}
+
+//--------------------------------------------------------------
+void ofxTwBar::mousePressed(int x, int y, int button){
+	mouseX = x;
+	mouseY = y;
+	mouseLocked = TwEventMouseButtonGLUT(button, GLUT_DOWN, mouseX, mouseY);
 }
 
 //--------------------------------------------------------------

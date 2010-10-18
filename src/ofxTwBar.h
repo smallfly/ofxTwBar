@@ -34,21 +34,24 @@
 	
 class ofxTwBar {
 	public:
-	ofxTwBar();
+		ofxTwBar();
 		~ofxTwBar();
 		
+		bool	mouseLocked;
+	
 		void	init( const std::string &title, const int w, const int h, const int r, const int g, const int b, const int a  );
 		void	update();
 		void	resize(ofResizeEventArgs & args);
 		void	draw();
 	
-		void	enable();
+		void	enable(bool enableMousePressed = true);
 		void	disable();
 	
 		void	keyPressed(ofKeyEventArgs & args);
 		void	mouseMoved(ofMouseEventArgs & args);
 		void	mouseDragged(ofMouseEventArgs & args);
 		void	mousePressed(ofMouseEventArgs & args);
+		void	mousePressed(int x, int y, int button);
 		void	mouseReleased(ofMouseEventArgs & args);
 		
 		void	addParam( const std::string &name, bool *boolParam, const std::string &optionsStr = "", bool readOnly = false );
@@ -58,6 +61,7 @@ class ofxTwBar {
 		void	addParam( const std::string &name, ofxQuaternion *quatParam, const std::string &optionsStr = "", bool readOnly = false );
 		void	addParam( const std::string &name, std::string *strParam, const std::string &optionsStr = "", bool readOnly = false );
 		void	addSeparator( const std::string &name = "", const std::string &optionsStr = "" );
+		void	addButton( const std::string &name = "", const std::string &optionsStr = "" );
 		
 		void	removeParam(const std::string &name);
 		
