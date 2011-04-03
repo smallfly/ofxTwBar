@@ -121,12 +121,12 @@ void ofxTwBar::addParam( const std::string &name, int *param, const std::string 
 } 
 
 //--------------------------------------------------------------
-void ofxTwBar::addParam( const std::string &name, ofxVec3f *param, const std::string &optionsStr, bool readOnly ) {
+void ofxTwBar::addParam( const std::string &name, ofVec3f *param, const std::string &optionsStr, bool readOnly ) {
 	implAddParam( name, param, TW_TYPE_DIR3F, optionsStr, readOnly );
 } 
 //
 //--------------------------------------------------------------
-void ofxTwBar::addParam( const std::string &name, ofxQuaternion *param, const std::string &optionsStr, bool readOnly ) {
+void ofxTwBar::addParam( const std::string &name, ofQuaternion *param, const std::string &optionsStr, bool readOnly ) {
 	implAddParam( name, param, TW_TYPE_QUAT4F, optionsStr, readOnly );
 }
 

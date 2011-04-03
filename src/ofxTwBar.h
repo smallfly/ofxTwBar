@@ -26,11 +26,12 @@
 
 #pragma once
 #include "ofMain.h"
-#include "ofxVec3f.h"
-#include "ofxVec2f.h"
-#include "ofxQuaternion.h"
+#include "ofVec3f.h"
+#include "ofVec2f.h"
+#include "ofQuaternion.h"
 #include "AntTweakBar.h"
 #include <string>
+#include <GLUT/GLUT.h>
 	
 class ofxTwBar {
 	public:
@@ -57,8 +58,8 @@ class ofxTwBar {
 		void	addParam( const std::string &name, bool *boolParam, const std::string &optionsStr = "", bool readOnly = false );
 		void	addParam( const std::string &name, float *quatParam, const std::string &optionsStr = "", bool readOnly = false, int type = TW_TYPE_FLOAT );
 		void	addParam( const std::string &name, int *intParam, const std::string &optionsStr = "", bool readOnly = false );
-		void	addParam( const std::string &name, ofxVec3f *vectorParam, const std::string &optionsStr = "", bool readOnly = false );
-		void	addParam( const std::string &name, ofxQuaternion *quatParam, const std::string &optionsStr = "", bool readOnly = false );
+		void	addParam( const std::string &name, ofVec3f *vectorParam, const std::string &optionsStr = "", bool readOnly = false );
+		void	addParam( const std::string &name, ofQuaternion *quatParam, const std::string &optionsStr = "", bool readOnly = false );
 		void	addParam( const std::string &name, std::string *strParam, const std::string &optionsStr = "", bool readOnly = false );
 		void	addSeparator( const std::string &name = "", const std::string &optionsStr = "" );
 		void	addButton( const std::string &name = "", const std::string &optionsStr = "" );
