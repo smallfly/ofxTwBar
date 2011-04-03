@@ -4,9 +4,9 @@
 
 #include "ofMain.h"
 #include "ofxTwBar.h"
-#include "ofxVec3f.h"
-#include "ofxVec2f.h"
-#include "ofxQuaternion.h"
+#include "ofVec3f.h"
+#include "ofVec2f.h"
+#include "ofQuaternion.h"
 
 class testApp : public ofBaseApp{
 
@@ -25,9 +25,9 @@ class testApp : public ofBaseApp{
 	
 		ofxTwBar bar;
 		
-		void SetQuaternionFromAxisAngle(const float *axis, float angle, ofxQuaternion quat);
-		void ConvertQuaternionToMatrix(const ofxQuaternion quat, float *mat);
-		void MultiplyQuaternions(const ofxQuaternion q1, const ofxQuaternion q2, ofxQuaternion qout);
+		void SetQuaternionFromAxisAngle(const float *axis, float angle, ofQuaternion quat);
+		void ConvertQuaternionToMatrix(const ofQuaternion quat, float *mat);
+		void MultiplyQuaternions(const ofQuaternion q1, const ofQuaternion q2, ofQuaternion qout);
 };
 
 #endif

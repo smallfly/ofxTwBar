@@ -16,20 +16,20 @@ Shape g_CurrentShape = SHAPE_CONE;
 // Shapes scale
 float g_Zoom = 100.0f;
 // Shape orientation (stored as a quaternion)
-ofxQuaternion g_Rotation;
-ofxQuaternion g_RotateStart;
+ofQuaternion g_Rotation;
+ofQuaternion g_RotateStart;
 // Shapes material
 float g_MatAmbient[] = { 0.5f, 0.0f, 0.0f, 1.0f };
 float g_MatDiffuse[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 // Light parameter
 float g_LightMultiplier = 1.0f;
-ofxVec3f g_LightDirection;
+ofVec3f g_LightDirection;
 
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	g_Rotation = ofxQuaternion(0.0f, 0.0f, 0.0f, 1.0f);
-	g_RotateStart = ofxQuaternion(0.0f, 0.0f, 0.0f, 1.0f);
+	g_Rotation = ofQuaternion(0.0f, 0.0f, 0.0f, 1.0f);
+	g_RotateStart = ofQuaternion(0.0f, 0.0f, 0.0f, 1.0f);
 	g_LightDirection.set(-0.57735f, -0.57735f, -0.57735f);
 	
 	// Create some 3D objects (stored in display lists)
@@ -112,7 +112,7 @@ void testApp::draw(){
 //--------------------------------------------------------------
 // Routine to set a quaternion from a rotation axis and angle
 // ( input axis = float[3] angle = float  output: quat = float[4] )
-void testApp::SetQuaternionFromAxisAngle(const float *axis, float angle, ofxQuaternion quat) {
+void testApp::SetQuaternionFromAxisAngle(const float *axis, float angle, ofQuaternion quat) {
     float sina2, norm;
     sina2 = (float)sin(0.5f * angle);
     norm = (float)sqrt(axis[0]*axis[0] + axis[1]*axis[1] + axis[2]*axis[2]);
@@ -127,7 +127,7 @@ void testApp::SetQuaternionFromAxisAngle(const float *axis, float angle, ofxQuat
 //--------------------------------------------------------------
 // Routine to convert a quaternion to a 4x4 matrix
 // ( input: quat = float[4]  output: mat = float[4*4] )
-void testApp::ConvertQuaternionToMatrix(const ofxQuaternion quat, float *mat) {
+void testApp::ConvertQuaternionToMatrix(const ofQuaternion quat, float *mat) {
     float yy2 = 2.0f * quat._v[1] * quat._v[1];
     float xy2 = 2.0f * quat._v[0] * quat._v[1];
     float xz2 = 2.0f * quat._v[0] * quat._v[2];
@@ -156,8 +156,8 @@ void testApp::ConvertQuaternionToMatrix(const ofxQuaternion quat, float *mat) {
 //--------------------------------------------------------------
 // Routine to multiply 2 quaternions (ie, compose rotations)
 // ( input q1 = float[4] q2 = float[4]  output: qout = float[4] )
-void testApp::MultiplyQuaternions(const ofxQuaternion q1, const ofxQuaternion q2, ofxQuaternion qout) {
-    ofxQuaternion qr;
+void testApp::MultiplyQuaternions(const ofQuaternion q1, const ofQuaternion q2, ofQuaternion qout) {
+    ofQuaternion qr;
 	qr._v[0] = q1._v[3]*q2._v[0] + q1._v[0]*q2._v[3] + q1._v[1]*q2._v[2] - q1._v[2]*q2._v[1];
 	qr._v[1] = q1._v[3]*q2._v[1] + q1._v[1]*q2._v[3] + q1._v[2]*q2._v[0] - q1._v[0]*q2._v[2];
 	qr._v[2] = q1._v[3]*q2._v[2] + q1._v[2]*q2._v[3] + q1._v[0]*q2._v[1] - q1._v[1]*q2._v[0];
