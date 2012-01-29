@@ -1,19 +1,19 @@
 /*
  Copyright (c) 2010, Hugues Bruyère - <http://www.smallfly.com>
  All rights reserved.
- 
+
  Bridge to AntTweakBar - "a light and intuitive graphical user interface" - <http://www.antisphere.com/Wiki/tools:anttweakbar>
 
  Based on code from Cinder Lib.
- 
+
  Redistribution and use in source and binary forms, with or without modification, are permitted provided that
  the following conditions are met:
- 
+
  * Redistributions of source code must retain the above copyright notice, this list of conditions and
  the following disclaimer.
  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and
  the following disclaimer in the documentation and/or other materials provided with the distribution.
- 
+
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
  PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
@@ -45,13 +45,13 @@ void ofxTwBar::init( const std::string &title, const int w, const int h, const i
 		cout << "AntTweakBar initialization failed: " << TwGetLastError() << endl;
 	}
 	mBar = TwNewBar(title.c_str());//, TwDeleteBar);
-	
+
 	char optionsStr[1024];
 	sprintf( optionsStr, "%s size='%i %i' color='%i %i %i' alpha=%i", title.c_str(), w, h, r, g, b, a);
 	TwDefine( optionsStr );
-	
+
 	TwGLUTModifiersFunc(glutGetModifiers);
-	
+
 	mouseLocked = false;
 }
 
@@ -74,7 +74,7 @@ void ofxTwBar::enable(bool enableMousePressed) {
 //	ofAddListener(ofEvents.update, this, &ofxTwBar::update);
 //	ofAddListener(ofEvents.draw, this, &ofxTwBar::draw);
 	ofAddListener(ofEvents.windowResized, this, &ofxTwBar::resize);
-	
+
 	ofAddListener(ofEvents.keyPressed, this, &ofxTwBar::keyPressed);
 	ofAddListener(ofEvents.mouseDragged, this, &ofxTwBar::mouseDragged);
 	ofAddListener(ofEvents.mouseMoved, this, &ofxTwBar::mouseMoved);
@@ -88,7 +88,7 @@ void ofxTwBar::disable() {
 //	ofRemoveListener(ofEvents.update, this, &ofxTwBar::update);
 //	ofRemoveListener(ofEvents.draw, this, &ofxTwBar::draw);
 	ofRemoveListener(ofEvents.windowResized, this, &ofxTwBar::resize);
-	
+
 	ofRemoveListener(ofEvents.keyPressed, this, &ofxTwBar::keyPressed);
 	ofRemoveListener(ofEvents.mouseDragged, this, &ofxTwBar::mouseDragged);
 	ofRemoveListener(ofEvents.mouseMoved, this, &ofxTwBar::mouseMoved);
@@ -107,23 +107,23 @@ void ofxTwBar::implAddParam( const std::string &name, void *param, int type, con
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, bool *param, const std::string &optionsStr, bool readOnly ) {
 	implAddParam( name, param, TW_TYPE_BOOLCPP, optionsStr, readOnly );
-} 
+}
 
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, float *param, const std::string &optionsStr, bool readOnly, int type ) {
 	implAddParam( name, param, type, optionsStr, readOnly );
-} 
+}
 
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, int *param, const std::string &optionsStr, bool readOnly )
 {
 	implAddParam( name, param, TW_TYPE_INT32, optionsStr, readOnly );
-} 
+}
 
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, ofVec3f *param, const std::string &optionsStr, bool readOnly ) {
 	implAddParam( name, param, TW_TYPE_DIR3F, optionsStr, readOnly );
-} 
+}
 //
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, ofQuaternion *param, const std::string &optionsStr, bool readOnly ) {
@@ -162,12 +162,12 @@ void ofxTwBar::keyPressed(ofKeyEventArgs & args){
 		cout << "SHIFT pressed.";
 		kmod |= TW_KMOD_SHIFT;
 	}
-	
+
 	if( ofKeyControl() ) {
 		cout << "CONTROL pressed.";
 		kmod |= TW_KMOD_CTRL;
 	}
-	
+
 	if( args.key == 9 ) {
 		cout << "ALT pressed.";
 		kmod |= TW_KMOD_ALT;
