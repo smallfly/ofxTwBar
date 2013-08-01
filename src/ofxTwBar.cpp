@@ -73,27 +73,27 @@ void ofxTwBar::draw() {
 void ofxTwBar::enable(bool enableMousePressed) {
 //	ofAddListener(ofEvents.update, this, &ofxTwBar::update);
 //	ofAddListener(ofEvents.draw, this, &ofxTwBar::draw);
-	ofAddListener(ofEvents.windowResized, this, &ofxTwBar::resize);
+	ofAddListener(ofEvents().windowResized, this, &ofxTwBar::resize);
 	
-	ofAddListener(ofEvents.keyPressed, this, &ofxTwBar::keyPressed);
-	ofAddListener(ofEvents.mouseDragged, this, &ofxTwBar::mouseDragged);
-	ofAddListener(ofEvents.mouseMoved, this, &ofxTwBar::mouseMoved);
+	ofAddListener(ofEvents().keyPressed, this, &ofxTwBar::keyPressed);
+	ofAddListener(ofEvents().mouseDragged, this, &ofxTwBar::mouseDragged);
+	ofAddListener(ofEvents().mouseMoved, this, &ofxTwBar::mouseMoved);
 	if(enableMousePressed)
-		ofAddListener(ofEvents.mousePressed, this, &ofxTwBar::mousePressed);
-	ofAddListener(ofEvents.mouseReleased, this, &ofxTwBar::mouseReleased);
+		ofAddListener(ofEvents().mousePressed, this, &ofxTwBar::mousePressed);
+	ofAddListener(ofEvents().mouseReleased, this, &ofxTwBar::mouseReleased);
 }
 
 //--------------------------------------------------------------
 void ofxTwBar::disable() {
 //	ofRemoveListener(ofEvents.update, this, &ofxTwBar::update);
 //	ofRemoveListener(ofEvents.draw, this, &ofxTwBar::draw);
-	ofRemoveListener(ofEvents.windowResized, this, &ofxTwBar::resize);
+	ofRemoveListener(ofEvents().windowResized, this, &ofxTwBar::resize);
 	
-	ofRemoveListener(ofEvents.keyPressed, this, &ofxTwBar::keyPressed);
-	ofRemoveListener(ofEvents.mouseDragged, this, &ofxTwBar::mouseDragged);
-	ofRemoveListener(ofEvents.mouseMoved, this, &ofxTwBar::mouseMoved);
-	ofRemoveListener(ofEvents.mousePressed, this, &ofxTwBar::mousePressed);
-	ofRemoveListener(ofEvents.mouseReleased, this, &ofxTwBar::mouseReleased);
+	ofRemoveListener(ofEvents().keyPressed, this, &ofxTwBar::keyPressed);
+	ofRemoveListener(ofEvents().mouseDragged, this, &ofxTwBar::mouseDragged);
+	ofRemoveListener(ofEvents().mouseMoved, this, &ofxTwBar::mouseMoved);
+	ofRemoveListener(ofEvents().mousePressed, this, &ofxTwBar::mousePressed);
+	ofRemoveListener(ofEvents().mouseReleased, this, &ofxTwBar::mouseReleased);
 }
 
 //--------------------------------------------------------------
