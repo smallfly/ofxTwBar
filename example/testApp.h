@@ -22,9 +22,9 @@ class testApp : public ofBaseApp{
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
-	
+
 		ofxTwBar bar;
-		
+
 		void SetQuaternionFromAxisAngle(const float *axis, float angle, ofQuaternion quat);
 		void ConvertQuaternionToMatrix(const ofQuaternion quat, float *mat);
 		void MultiplyQuaternions(const ofQuaternion q1, const ofQuaternion q2, ofQuaternion qout);

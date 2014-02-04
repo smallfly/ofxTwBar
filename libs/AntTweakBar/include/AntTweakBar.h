@@ -2,8 +2,8 @@
 //
 //  @file       AntTweakBar.h
 //
-//  @brief      AntTweakBar is a light and intuitive graphical user interface 
-//              that can be readily integrated into OpenGL and DirectX 
+//  @brief      AntTweakBar is a light and intuitive graphical user interface
+//              that can be readily integrated into OpenGL and DirectX
 //              applications in order to interactively tweak them.
 //
 //  @author     Philippe Decaudin - http://www.antisphere.com
@@ -241,7 +241,7 @@ TW_API int      TW_CALL TwKeyPressed(int key, int modifiers);
 typedef enum ETwMouseAction
 {
     TW_MOUSE_RELEASED,
-    TW_MOUSE_PRESSED  
+    TW_MOUSE_PRESSED
 } TwMouseAction;
 typedef enum ETwMouseButtonID
 {
@@ -275,7 +275,7 @@ TW_API int      TW_CALL TwEventWin(void *wnd, unsigned int msg, unsigned int _W6
 
 //  For libSDL event loop
 TW_API int      TW_CALL TwEventSDL(const void *sdlEvent);
- 
+
 //  For GLFW event callbacks
 TW_API int      TW_CALL TwEventMouseButtonGLFW(int glfwButton, int glfwAction);
 TW_API int      TW_CALL TwEventKeyGLFW(int glfwKey, int glfwAction);
@@ -299,7 +299,7 @@ typedef void (TW_GLUT_CALL *GLUTmousemotionfun)(int mouseX, int mouseY);
 typedef void (TW_GLUT_CALL *GLUTkeyboardfun)(unsigned char glutKey, int mouseX, int mouseY);
 typedef void (TW_GLUT_CALL *GLUTspecialfun)(int glutKey, int mouseX, int mouseY);
 
- 
+
 // ----------------------------------------------------------------------------
 //  Make sure the types have the right sizes
 // ----------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 /*
 Example for ofxTwBar.
-Bridge to AntTweakBar - "a light and intuitive graphical user interface" 
+Bridge to AntTweakBar - "a light and intuitive graphical user interface"
 <http://www.antisphere.com/Wiki/tools:anttweakbar>
- 
+
 A simple example using AntTweakBar with OpenGL and GLUT .
 Example from <http://www.antisphere.com/Wiki/tools:anttweakbar:examples#twsimpleglut>
 */
@@ -27,11 +27,11 @@ ofVec3f g_LightDirection;
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	
+
 	g_Rotation = ofQuaternion(0.0f, 0.0f, 0.0f, 1.0f);
 	g_RotateStart = ofQuaternion(0.0f, 0.0f, 0.0f, 1.0f);
 	g_LightDirection.set(-0.57735f, -0.57735f, -0.57735f);
-	
+
 	// Create some 3D objects (stored in display lists)
     glNewList(SHAPE_TEAPOT, GL_COMPILE);
     glutSolidTeapot(1.0);
@@ -42,21 +42,21 @@ void testApp::setup(){
     glNewList(SHAPE_CONE, GL_COMPILE);
     glutSolidCone(1.0, 1.5, 64, 4);
     glEndList();
-	
-	
+
+
 	float axis[] = { 0.7f, 0.7f, 0.0f }; // initial model rotation
     float angle = 0.8f;
 
     // Init rotation
     SetQuaternionFromAxisAngle(axis, angle, g_Rotation);
     SetQuaternionFromAxisAngle(axis, angle, g_RotateStart);
-	
+
 	//TWEAK BAR
 	bar.init("TweakBar", 200, 400, 200, 200, 200, 100);
 	bar.enable();
-	
+
 	bar.addParam("Zoom", &g_Zoom, " min=0.01 max=500.0 step=1.0 keyIncr=z keyDecr=Z help='Scale the object (1=original size).' ", false);
-	bar.addParam("ObjRotation", &g_Rotation, " label='Object rotation' open help='Change the object orientation.' ", false);	
+	bar.addParam("ObjRotation", &g_Rotation, " label='Object rotation' open help='Change the object orientation.' ", false);
 	bar.addParam("Multiplier", &g_LightMultiplier, " label='Light booster' min=0.1 max=4 step=0.02 keyIncr='+' keyDecr='-' help='Increase/decrease the light power.' ", false);
 	bar.addParam("LightDir", &g_LightDirection, " label='Light direction' open help='Change the light direction.' ", false);
 	bar.addSeparator("separator");
@@ -72,15 +72,15 @@ void testApp::update(){
 void testApp::draw(){
 	float v[4]; // will be used to set light paramters
     float mat[4*4]; // rotation matrix
-	
+
     // Clear frame buffer
     glClearColor(0, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
     glEnable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
     glEnable(GL_NORMALIZE);
-	
+
     // Set light
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
@@ -90,11 +90,11 @@ void testApp::draw(){
     glLightfv(GL_LIGHT0, GL_DIFFUSE, v);
     v[0] = -g_LightDirection.x; v[1] = -g_LightDirection.y; v[2] = -g_LightDirection.z; v[3] = 0.0f;
     glLightfv(GL_LIGHT0, GL_POSITION, v);
-	
+
     // Set material
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, g_MatAmbient);
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, g_MatDiffuse);
-	
+
     // Rotate and draw shape
     glPushMatrix();
     //glTranslatef(0.5f, -0.3f, 0.0f);
@@ -104,7 +104,7 @@ void testApp::draw(){
     glScalef(g_Zoom, g_Zoom, g_Zoom);
     glCallList(g_CurrentShape);
     glPopMatrix();
-	
+
 	//TWEAK BAR
 	bar.draw();
 }
@@ -120,7 +120,7 @@ void testApp::SetQuaternionFromAxisAngle(const float *axis, float angle, ofQuate
     quat._v[1] = sina2 * axis[1] / norm;
     quat._v[2] = sina2 * axis[2] / norm;
     quat._v[3] = (float)cos(0.5f * angle);
-	
+
 }
 
 
